@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: qr-attendance-backend
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn scanner_project.wsgi:application
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.3
+      - key: DJANGO_SETTINGS_MODULE
+        value: scanner_project.settings
