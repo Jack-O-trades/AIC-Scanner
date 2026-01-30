@@ -1,4 +1,4 @@
-from django.utils import timezone  # ✅ CORRECT import
+from django.utils import timezone
 from django.shortcuts import render
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
@@ -6,13 +6,13 @@ from django.views.decorators.http import require_http_methods
 from .models import Attendee
 from django.db.models import Q
 import json
+from django.middleware.csrf import get_token
 
 def index(request):
     """Render the QR scanner page."""
     return render(request, 'scanner/index.html')
 
 @require_http_methods(["POST"])
-@csrf_exempt
 def scan_qr(request):
     """
     Handle QR scan and mark attendance.
